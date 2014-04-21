@@ -1,0 +1,13 @@
+<% provide(:title, 'All Positions') %>
+<h1>All Positions</h1>
+<%= will_paginate %>
+
+<ul class="positions">
+  <% @positions.each do |position| %>
+    <%= render position%>
+  <% end %>
+</ul>
+
+<%= will_paginate %>
+
+<span> <%= link_to "Create new Position", new_position_path %></span>

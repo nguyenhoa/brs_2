@@ -1,0 +1,7 @@
+<li>
+  <span class="short_name"><%= position.short_name %><span>
+  <span class="name"> <%= position.name %></span>
+   <%= link_to "delete", position, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+   <%= link_to "edit", edit_position_path(position.id) %>
+</li>

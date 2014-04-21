@@ -1,0 +1,17 @@
+<% provide(:title, 'new Position') %>
+<h1>Make new Position </h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@position) do |f| %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.label :short_name %>
+      <%= f.text_field :short_name %>
+
+      <%= f.submit "Create Position", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

@@ -1,7 +1,4 @@
 class PositionsController < ApplicationController
-  def index
-    @position = Position.paginate page: params[:page]
-  end
 
   def show
     @position = Position.find params[:id]
@@ -14,7 +11,12 @@ class PositionsController < ApplicationController
   def destroy
     Position.find(params[:id]).destroy
     flash[:success] = "Position deleted."
-    redirect_to Positions_url
+    redirect_to positions_path
+  end
+
+  def index
+    @positions = Position.paginate page: params[:page]
+>>>>>>>  Task Position
   end
 
   def edit
@@ -22,12 +24,12 @@ class PositionsController < ApplicationController
   end
 
   def update
-    @position = Position.new position_params
+    @position = Position.find params[:id]
     if @position.update_attributes position_params
       flash[:success] = "Update done!"
-      redirect_to @position
+      redirect_to positions_path
     else
-      render 'position_edit'
+      render 'edit'
     end
   end
 
@@ -35,9 +37,9 @@ class PositionsController < ApplicationController
     @position = Position.new position_params
     if @position.save
       flash[:success] = "Create done!"
-      redirect_to @position
+      redirect_to positions_path
     else
-      render 'position_new'
+      redirect_to positions_path
     end
   end  
 
