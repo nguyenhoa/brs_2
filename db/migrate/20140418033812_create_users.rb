@@ -7,6 +7,8 @@ class CreateUsers < ActiveRecord::Migration
       t.boolean :role
       t.string :password_digest
       t.string :remember_token
+      t.integer :team_id
+      t.integer :position_id
       t.timestamps
     end
     add_index :users, :email, unique: true

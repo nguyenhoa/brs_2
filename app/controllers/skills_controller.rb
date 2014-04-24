@@ -4,6 +4,11 @@ class SkillsController < ApplicationController
     @skill = Skill.find params[:id]
   end
 
+  def index
+    @skills = Skill.paginate page: params[:page]
+  end
+
+  
   def new
     @skill = Skill.new
   end
@@ -12,7 +17,7 @@ class SkillsController < ApplicationController
     @skill = Skill.new skill_params
     if @skill.save 
       flash[:success] = "Create Successful!"
-      redirect_to @skill
+      redirect_to @skills
     else
       flash[:faild] = "fail"
       render 'new'
@@ -34,10 +39,6 @@ class SkillsController < ApplicationController
     end
   end
 
-  def index
-    @skills = Skill.paginate page: params[:page]
-  end
-
   def destroy
     Skill.find (params[:id]).destroy
     flash[:success] = "Skill deleted."
@@ -47,6 +48,6 @@ class SkillsController < ApplicationController
   private
 
     def skill_params
-      params.require(:skill).permit(:name, :level, :num_years)
+      params.require(:skill).permit(:name)
     end
 end

@@ -15,6 +15,24 @@
       <%= f.label :email %>
       <%= f.text_field :email %>
 
+      <%= f.label :team, "Team" %>
+      <%= f.collection_select(:team_id, Team.all, :id, :name, prompt: "Select please") %>
+
+      <%= f.label :position %>
+      <%= f.collection_select(:position_id, Position.all, :id, :name, prompt: "Select please") %>
+
+      <%= f.label :project, "Projects joined" %>
+      <% for project in @projects %>
+        <%= check_box_tag "project_ids[]", project.id %>
+        <%= project.name %>
+      <% end %>
+
+      <%= f.label :skill, "Skill" %>
+      <% for skill in @skills %>
+        <%= check_box_tag "skill_ids[]", skill.id %>
+        <%= skill.name %><br>
+      <% end %>
+      
       <%= f.label :password %>
       <%= f.password_field :password %>
 

@@ -6,9 +6,9 @@ class CreateProjects < ActiveRecord::Migration
       t.datetime :start_date
       t.datetime :end_date
       t.integer :id_leader
+      t.integer :team_id
 
       t.timestamps
     end
-    add_index :projects, :name, unique: true
   end
 end

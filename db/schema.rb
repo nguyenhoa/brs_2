@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140423090324) do
+ActiveRecord::Schema.define(version: 20140424070330) do
 
   create_table "positions", force: true do |t|
     t.string   "name"
@@ -20,29 +20,22 @@ ActiveRecord::Schema.define(version: 20140423090324) do
     t.datetime "updated_at"
   end
 
-  add_index "positions", ["short_name"], name: "index_positions_on_short_name", unique: true, using: :btree
-
   create_table "projects", force: true do |t|
     t.string   "name"
     t.string   "short_name"
     t.datetime "start_date"
     t.datetime "end_date"
     t.integer  "id_leader"
+    t.integer  "team_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "projects", ["name"], name: "index_projects_on_name", unique: true, using: :btree
 
   create_table "skills", force: true do |t|
     t.string   "name"
-    t.integer  "level"
-    t.integer  "num_years"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "skills", ["name"], name: "index_skills_on_name", unique: true, using: :btree
 
   create_table "teams", force: true do |t|
     t.string   "name"
@@ -52,15 +45,33 @@ ActiveRecord::Schema.define(version: 20140423090324) do
     t.datetime "updated_at"
   end
 
+  create_table "user_projects", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_skills", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "skill_id"
+    t.integer  "level"
+    t.integer  "num_year"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "name"
     t.datetime "birthday"
     t.string   "email"
     t.boolean  "role"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.string   "password_digest"
     t.string   "remember_token"
+    t.integer  "team_id"
+    t.integer  "position_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

@@ -10,7 +10,7 @@ development:
   database: MMS
   pool: 5
   username: root
-  password: "buongnhj"
+  password: "123456"
   socket: /var/run/mysqld/mysqld.sock
 
 test:
@@ -20,7 +20,7 @@ test:
   database: MMS_test
   pool: 5
   username: root
-  password: "buongnhj"
+  password: "123456"
   socket: /var/run/mysqld/mysqld.sock
 
 production:

@@ -6,6 +6,5 @@ class CreatePositions < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :positions, :short_name, unique: true
   end
 end
