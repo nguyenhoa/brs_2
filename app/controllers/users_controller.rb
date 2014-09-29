@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
 
   before_filter :signed_in_user
-  before_filter :correct_user
 
   def show
     @user = User.find params[:id]
@@ -22,7 +21,8 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.paginate page: params[:page]
+    @q = User.search params[:q]
+    @users = @q.result(distinct: true).order(:id).page(params[:page])
   end
 
   def create
