@@ -68,10 +68,15 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
+  def remove_avatar
+    @user.avatar = nil #remove user's avatar
+    @user.save
+  end
+
   private
 
     def user_params
-     params.require(:user).permit(:name, :birthday, :email, :role,
+     params.require(:user).permit(:name, :birthday, :email, :role, :avatar, #add :avatar to user's params
         :password, :password_confirmation, :team_id, :position_id,
         user_skills_attributes: [:skill_id, :level, :num_year], "project_ids" => [])
     end

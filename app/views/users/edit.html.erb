@@ -55,7 +55,9 @@
           <% end %>
         </tbody>
       </table>
-      
+      <br>
+      <%= f.input :avatar, as: :file %>  <!-- file field for image's input -->
+      <br>
       <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>

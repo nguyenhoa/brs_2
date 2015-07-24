@@ -7,10 +7,11 @@ gem "bcrypt-ruby", "3.1.2"
 gem "faker", "1.1.2"
 gem "will_paginate", "3.0.4"
 gem "bootstrap-will_paginate", "0.0.9"
-gem "mysql2"
+gem "sqlite3", "1.3.8"
+gem "paperclip", "~> 4.2"
+gem "aws-sdk"
 
 group :development, :test do
-  gem "sqlite3", "1.3.8"
   gem "rspec-rails", "2.13.1"
   gem "guard-rspec", "2.5.0"
   gem "spork-rails", "4.0.0"

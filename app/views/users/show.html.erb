@@ -1,4 +1,6 @@
 <% provide(:title, @user.name) %>
 <h1><%= @user.name %></h1>
 
+<%= image_tag @user.avatar.url(:thumb) %><br>
+<!-- hien thi image kieu thumb, ban co the thay the thumb = [small, large... hoac bat ky style nao ban dinh nghia] -->
 Name : <%= @user.name %> <br> Birthday : <%= @user.birthday %> <br> Email : <%= @user.email %> <br> Team : <%= @user.team_id %><br> Position : <%= @user.position_id %>
